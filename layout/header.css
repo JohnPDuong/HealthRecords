@@ -3,3 +3,46 @@ header {
     padding: 20px;
     text-align: center;
 }
+
+.headerNav {
+    float: left;
+    display: block;
+    width: 100%;
+}
+
+ul {
+    background-color: #f3f3f3;
+    border: 1px solid #e7e7e7;
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    overflow: hidden;
+    padding: 0;
+    padding-inline-start: 40px;
+}
+
+li {
+    float: left;
+    display: list-item;
+}
+
+.somename {
+    float: right;
+}
+
+a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+a.active {
+    color: white;
+    background-color: #008CBA;
+}
