@@ -1,3 +1,2 @@
-@import "font/font.css";
-
-@import "layout/header.css";
+@import "../font/font.css";
+@import "../layout/header.css";
