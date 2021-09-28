@@ -30,7 +30,7 @@ li {
     display: list-item;
 }
 
-.somename {
+li.right {
     float: right;
 }
 
