@@ -1,0 +1,16 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: block;
+    min-width: 1024px;
+}
+
+.App {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
