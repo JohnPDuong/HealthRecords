@@ -5,7 +5,8 @@ import './css/layout/App.css'
 
 export default function HeaderBar() {
     return (
-        <div className="App header">
+        <div className = "App row">
+            <div className="header" />
         </div>
     )
 }
