@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import HeaderLogo from './HeaderBar';
+import HeaderBar from './HeaderBar';
 import HeaderNavBar from './HeaderNavBar';
 import IndexBody from './IndexBody';
+import DebugScreen from './DebugScreen';
 
 function App() {
 
     return (
     <>
-        <HeaderLogo />
+        <HeaderBar />
         <HeaderNavBar />
         <IndexBody />
+        <DebugScreen />
     </>
     )
 }

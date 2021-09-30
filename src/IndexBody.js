@@ -7,7 +7,7 @@ import './css/layout/Background.css'
 
 export default function IndexBody() {
     return (
-        <div className="App">
+        <div className="App img-wrapper">
             <img className="background" src={img} />
         </div>
     )
