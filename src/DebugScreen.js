@@ -1,12 +1,34 @@
 import React from 'react'
-import useViewportWidth from './utils/useViewportWidth'
 
-export default function DebugScreen() {
-    const size = useViewportWidth();
+export class DebugScreen extends React.Component {
+    constructor(props) {
+        super();
+        this.state = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        }
+    }
 
-    return (
-        <div>
-            {size.width}px / {size.height} px        
-        </div>
-    )
+    handleResize = e => {
+        this.setState({
+            width: window.innerWidth,
+            height: window.innerHeight
+        });
+    }
+
+    componentDidMount() {
+        window.addEventListener("resize", this.handleResize);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.handleResize);
+    }
+
+    render() {
+        return (
+            <div>
+                {this.state.width}px / {this.state.height} px        
+            </div>
+        );
+    }
 }
