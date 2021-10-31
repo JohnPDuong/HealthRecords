@@ -17,9 +17,6 @@
 li {
     float: right;
     display: list-item;
-}
-
-a {
     display: block;
     color: rgb(45, 93, 250);
     text-align: center;

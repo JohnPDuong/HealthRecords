@@ -1,23 +1,18 @@
 import React from 'react';
-import { HeaderBar } from './HeaderBar';
-import { HeaderNavBar } from './HeaderNavBar';
-import { IndexBody } from './IndexBody';
-import { DebugScreen } from './DebugScreen';
 import { render } from 'react-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Home } from './components/Home';
+import { About } from './components/About';
+import { News } from './components/News';
 
 class App extends React.Component {
-    constructor() {
-        super();
-    }
-
     render () {
         return (
-            <>
-                <HeaderBar />
-                <HeaderNavBar />
-                <IndexBody />
-                <DebugScreen />
-            </>
+            <Router>
+                <Route exact path={ "/" } component={ Home }/>
+                <Route exact path={ "/about" } component={ About }/>
+                <Route exact path={ "/news" } component={ News }/>
+            </Router>
             );
     }
 }

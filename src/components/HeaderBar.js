@@ -1,7 +1,7 @@
 import React from 'react'
 
-import './css/layout/Header.css'
-import './css/layout/App.css'
+import '../css/layout/Header.css'
+import '../css/layout/App.css'
 
 export class HeaderBar extends React.Component {
     render() {
