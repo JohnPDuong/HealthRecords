@@ -1,7 +1,7 @@
 import React from 'react'
 
 export class DebugScreen extends React.Component {
-    constructor(props) {
+    constructor() {
         super();
         this.state = {
             width: window.innerWidth,
