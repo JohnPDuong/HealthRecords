@@ -15,7 +15,7 @@ class App extends React.Component {
                 <Route exact path={ "/news" } component={ News }/>
                 <Route exact path={ "/somerandompage" } component={ SomeRandomPage }/>
             </Router>
-            );
+        );
     }
 }
 
