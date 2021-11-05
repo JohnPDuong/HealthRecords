@@ -15,7 +15,7 @@ export class Home extends React.Component {
                 <div className="App img-wrapper">
                     <img className="background img" src={img} />
                     <div className="background-text bgt-top">Ready For You</div>
-                    <div className="background-text bgt-mid">Whereever You Are</div>
+                    <div className="background-text bgt-mid">Wherever You Are</div>
                     <div className="background-text bgt-bot">Whenever You Need</div>
                 </div>
                 <DebugScreen/>
