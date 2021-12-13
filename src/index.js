@@ -5,6 +5,8 @@ import { Home } from './components/Home';
 import { About } from './components/About';
 import { News } from './components/News';
 import { SomeRandomPage } from './components/SomeRandomPage';
+import { Login } from './components/Login';
+import { SignUp } from './components/SignUp';
 
 class App extends React.Component {
     render () {
@@ -14,6 +16,8 @@ class App extends React.Component {
                 <Route exact path={ "/about" } component={ About }/>
                 <Route exact path={ "/news" } component={ News }/>
                 <Route exact path={ "/somerandompage" } component={ SomeRandomPage }/>
+                <Route exact path={ "/login" } component={ Login }/>
+                <Route exact path={ "/signup" } component={ SignUp }/>
             </Router>
         );
     }

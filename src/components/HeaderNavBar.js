@@ -9,10 +9,12 @@ export class HeaderNavBar extends React.Component {
         return (
             <div className="App nav-wrapper">
                 <ul className="navbar">
-                    <li><NavLink exact activeStyle={{color: "red"}} to={"/somerandompage"}>SomeRandomPage</NavLink></li>
-                    <li><NavLink exact activeStyle={{color: "red"}} to={"/news"}>News</NavLink></li>
-                    <li><NavLink exact activeStyle={{color: "red"}} to={"/about"}>About</NavLink></li>
-                    <li><NavLink exact activeStyle={{color: "red"}} to={"/"}>Home</NavLink></li>
+                    <li><NavLink exact activeStyle={{ color: "red" }} to={ "/somerandompage" }>SomeRandomPage</NavLink></li>
+                    <li><NavLink exact activeStyle={{ color: "red" }} to={ "/news" }>News</NavLink></li>
+                    <li><NavLink exact activeStyle={{ color: "red" }} to={ "/about" }>About</NavLink></li>
+                    <li><NavLink exact activeStyle={{ color: "red" }} to={ "/" }>Home</NavLink></li>
+                    <li><NavLink exact to={ "/login" }>Login</NavLink></li>
+                    <li><NavLink exact to={ "/signup" }>Sign Up</NavLink></li>
                 </ul>
             </div>
         );
