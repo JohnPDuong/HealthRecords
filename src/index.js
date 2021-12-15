@@ -7,6 +7,8 @@ import { News } from './components/News';
 import { SomeRandomPage } from './components/SomeRandomPage';
 import { Login } from './components/Login';
 import { SignUp } from './components/SignUp';
+import { LoginForm } from './components/LoginForm';
+import { SignUpForm } from './components/SignUpForm';
 
 class App extends React.Component {
     render () {
@@ -18,6 +20,8 @@ class App extends React.Component {
                 <Route exact path={ "/somerandompage" } component={ SomeRandomPage }/>
                 <Route exact path={ "/login" } component={ Login }/>
                 <Route exact path={ "/signup" } component={ SignUp }/>
+                <Route exact path={ "/loginformtest " } component={ LoginForm }/>
+                <Route exact path={ "/signupformtest" } component={ SignUpForm }/>
             </Router>
         );
     }
