@@ -1,0 +1,7 @@
+CREATE DATABASE healthrecords;
+
+CREATE TABLE Client (
+    ClientID SERIAL PRIMARY KEY,
+    FName VARCHAR(100),
+    LName VARCHAR(100)
+);
