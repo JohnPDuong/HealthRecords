@@ -1,11 +1,12 @@
 import React from 'react';
 import { SecureNav } from './SecureNav';
 
+const port = process.env.ENDPOINT_PORT || 3001;
+
 export class SignUp extends React.Component {
     constructor() {
         super();
         this.state = {
-            user: undefined,
             email: undefined,
             password: undefined,
             verifyPassword: undefined,
@@ -13,11 +14,15 @@ export class SignUp extends React.Component {
     }
 
     handleSubmit = e => {
-        e.preventDefault();
-        alert(`Your user is: ${ this.state.user }\nYour password is: ${ this.state.password }`);
+        try {
+            alert(port);
+        } catch (err) {
+            console.error(err);
+        }
     }
 
-    userHandler = e => {
+    emailHandler = e => {
+        console.log(port);
         this.setState({ user: e.target.value });
     }
 
@@ -26,14 +31,7 @@ export class SignUp extends React.Component {
     }
 
     verifyPasswordHandler = e => {
-        if (this.state.password != undefined)
-        {
-
-        }
-        else
-        {
-            alert("Password is required");
-        }
+        this.setState({ verifyPassword: e.target.value });
     }
 
     render() {
@@ -43,12 +41,12 @@ export class SignUp extends React.Component {
                 <div>TestPage</div>
                 <form onSubmit={ this.handleSubmit }>
                     <label>
-                        Username:
+                        Email:
                         <input
                             type="text"
-                            name="user"
-                            value={ this.state.user }
-                            onChange={ this.userHandler }
+                            name="email"
+                            value={ this.state.email }
+                            onChange={ this.emailHandler }
                         />
                     </label>
                     <br/>
