@@ -2,16 +2,20 @@ import express from 'express';
 import cors from 'cors';
 import pool from './db.js';
 import * as dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-dotenv.config();
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+dotenv.config({ path: `${__dirname}/./../.env` });
 
 //Middleware
 
 const app = express();
-const port = process.env.ENDPOINT_PORT || 3001;
+const port = process.env.ENDPOINT_PORT;
 
 var corsOptions = {
-    origin: `http://localhost:${port}`
+    origin: `http://localhost:3000`
 }
 
 app.use(cors(corsOptions));
@@ -33,11 +37,13 @@ app.post("/addclient", async(req, res) => {
     }
 });
 
-//Get a client using fname, lname
+//Get a client using email
 
 app.post("/getclient", async(req, res) => {
     try {
-        console.log(req.params)
+        const { email } = req.body;
+        console.log(email);
+        res.send({ email });
     } catch (err) {
         console.error(err.message);
     }

@@ -20,7 +20,21 @@ export const SignUpForm = () => {
     const formOptions = { resolver: yupResolver(validationSchema) };
 
     const { register, handleSubmit, formState: { errors } } = useForm(formOptions);
-    const onSubmit = values => console.log(values);
+    
+    const onSubmit = values => {
+        fetch(`http://localhost:${process.env.REACT_APP_ENDPOINT_PORT}/getclient`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(values),
+        })
+        .then(response => response.json())
+        .then(responseJson => {
+            console.log(responseJson);
+        })
+        .catch(error => console.log("Auth failed: " + error.message));
+    };
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -44,6 +58,22 @@ export const SignUpForm = () => {
                 {...register("email")}
             />
             <p>{errors.email && errors.email.message}</p>
+            <br/>
+
+            <input
+                placeholder="Password"
+                type="password"
+                {...register("password")}
+            />
+            <p>{errors.password && errors.password.message}</p>
+            <br/>
+
+            <input
+                placeholder="Confirm Password"
+                type="password"
+                {...register("confirmPassword")}
+            />
+            <p>{errors.confirmPassword && errors.confirmPassword.message}</p>
             <br/>
 
             <button type="submit">Submit</button>

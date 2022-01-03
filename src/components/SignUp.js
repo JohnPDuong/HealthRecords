@@ -7,7 +7,7 @@ export class SignUp extends React.Component {
         return (
             <div>
                 <SecureNav />
-                <div>TestPage</div>
+                <div>Registration</div>
                 <SignUpForm/>
             </div>
         );
