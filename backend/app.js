@@ -5,6 +5,11 @@ import * as dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
+import {
+    validateUserByEmail
+}
+from './controllers/controllerUser.js';
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 dotenv.config({ path: `${__dirname}/./../.env` });
@@ -23,33 +28,7 @@ app.use(express.json());
 
 //Routes
 
-//Create a client
-
-app.post("/addclient", async(req, res) => {
-    try {
-        const { fname, lname } = req.body;
-        const newClient = await pool.query("INSERT INTO Clients (FName, LName) VALUES ($1, $2) RETURNING *;", 
-                                            [fname, lname]);
-
-        res.json(newClient.rows[0]);
-    } catch (err) {
-        console.error(err.message);
-    }
-});
-
-//Get a client using email
-
-app.post("/getclient", async(req, res) => {
-    try {
-        const { email } = req.body;
-        console.log(email);
-        res.send({ email });
-    } catch (err) {
-        console.error(err.message);
-    }
-});
-
-//Get all clients
+app.use("/validateuser", validateUserByEmail)
 
 app.get("/getallclients", async(req, res) => {
     try {
@@ -61,8 +40,6 @@ app.get("/getallclients", async(req, res) => {
     }
 });
 
-//Update a client
-
 app.post("/updateclient", async(req, res) => {
     try {
 
@@ -70,8 +47,6 @@ app.post("/updateclient", async(req, res) => {
         console.error(err.message);
     }
 });
-
-//Delete a client
 
 app.post("/delclient", async(req, res) => {
     try {
