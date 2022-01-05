@@ -6,7 +6,7 @@ import img from '../img/generic-logo.jpg';
 export class SecureNav extends React.Component {
     render() {
         return (
-            <NavLink exact to={ "/" }><img src={ img }/></NavLink>
+            <NavLink exact="true" to={ "/" }><img src={ img }/></NavLink>
         );
     }
 }

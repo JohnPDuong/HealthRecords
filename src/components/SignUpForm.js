@@ -3,10 +3,13 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import {FIRST_NAME_MAX, LAST_NAME_MAX } from '../constants/SignUpFormConstants';
-import crypto from 'crypto';
+import { encryptPassword } from '../helper/password';
+import { Navigate } from 'react-router-dom';
 
 export const SignUpForm = () => {
     const port = process.env.REACT_APP_ENDPOINT_PORT;
+
+    const [ successfulReg, setSuccessfulReg ] = useState(false);
     const [ invalidEmail, setInvalidEmail ] = useState(false);
 
     const emailSchema = yup.string().email();
@@ -29,34 +32,22 @@ export const SignUpForm = () => {
     
     const onSubmit = async values => {
         document.getElementById("submitBtn").disabled=true;
-
-        console.log(values);
-
+        
         if (!invalidEmail)
         {
-            let salt = crypto.randomBytes(128).toString('base64');
-            let iterations = 10000;
+            const { password, salt } = encryptPassword(values.password);
+            const { fname, lname, email } = values;
+            const fetchValues = { fname, lname, email, password, salt };
 
-            crypto.pbkdf2(values.password, salt, iterations, 64, 'sha512', async (err, derivedKey) => {
-                if (err) throw err;
-                
-                const { fname, lname, email } = values;
-                const password = derivedKey.toString('base64');
-
-                const fetchValues = { fname, lname, email, password, salt };
-
-                await fetch(`http://localhost:${[port]}/adduserbyregistration`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(fetchValues),
-                })
-                .then(res => res.json())
-                .then(resJson => {
-                    console.log(resJson);
-                });
+            await fetch(`http://localhost:${[port]}/adduserbyregistration`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(fetchValues),
             });
+
+            //setSuccessfulReg(true);
         }
 
         document.getElementById("submitBtn").disabled=false;
@@ -140,6 +131,8 @@ export const SignUpForm = () => {
             <br/>
 
             <button type="submit" id="submitBtn">Submit</button>
+
+            { successfulReg && <Navigate to="/login" replace={ true } />}
         </form>
     );
 };

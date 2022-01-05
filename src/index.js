@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Home } from './components/Home';
 import { About } from './components/About';
 import { News } from './components/News';
@@ -12,12 +12,14 @@ class App extends React.Component {
     render () {
         return (
             <Router>
-                <Route exact path={ "/" } component={ Home }/>
-                <Route exact path={ "/about" } component={ About }/>
-                <Route exact path={ "/news" } component={ News }/>
-                <Route exact path={ "/somerandompage" } component={ SomeRandomPage }/>
-                <Route exact path={ "/login" } component={ Login }/>
-                <Route exact path={ "/signup" } component={ SignUp }/>
+                <Routes>
+                    <Route exact path={ "/" } element={ <Home /> }/>
+                    <Route exact path={ "/about" } element={ <About /> }/>
+                    <Route exact path={ "/news" } element={ <News /> }/>
+                    <Route exact path={ "/somerandompage" } component={ <SomeRandomPage /> }/>
+                    <Route exact path={ "/login" } element={ <Login /> }/>
+                    <Route exact path={ "/signup" } element={ <SignUp /> }/>
+                </Routes>
             </Router>
         );
     }

@@ -13,11 +13,11 @@ export class HeaderNavBar extends React.Component {
                 </div>
                 <div className="App nav-wrapper">
                 <ul className="navbar">
-                    <li><NavLink exact activeStyle={{ color: "red" }} to={ "/" }>Home</NavLink></li>
-                    <li><NavLink exact activeStyle={{ color: "red" }} to={ "/news" }>News</NavLink></li>
-                    <li><NavLink exact activeStyle={{ color: "red" }} to={ "/about" }>About</NavLink></li>
-                    <li><NavLink exact to={ "/login" }>Login</NavLink></li>
-                    <li><NavLink exact to={ "/signup" }>Sign Up</NavLink></li>
+                    <li><NavLink exact="true" activestyle={{ color: "red" }} to={ "/" }>Home</NavLink></li>
+                    <li><NavLink exact="true" activestyle={{ color: "red" }} to={ "/news" }>News</NavLink></li>
+                    <li><NavLink exact="true" activestyle={{ color: "red" }} to={ "/about" }>About</NavLink></li>
+                    <li><NavLink exact="true" to={ "/login" }>Login</NavLink></li>
+                    <li><NavLink exact="true" to={ "/signup" }>Sign Up</NavLink></li>
                 </ul>
                 </div>
             </div>
