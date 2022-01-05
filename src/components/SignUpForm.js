@@ -3,9 +3,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import {FIRST_NAME_MAX, LAST_NAME_MAX } from '../constants/SignUpFormConstants';
+import crypto from 'crypto';
 
 export const SignUpForm = () => {
-    const [ invalidEmail, setValidEmail ] = useState(false);
+    const port = process.env.REACT_APP_ENDPOINT_PORT;
+    const [ invalidEmail, setInvalidEmail ] = useState(false);
 
     const emailSchema = yup.string().email();
 
@@ -26,28 +28,72 @@ export const SignUpForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm(formOptions);
     
     const onSubmit = async values => {
-        
+        document.getElementById("submitBtn").disabled=true;
+
+        console.log(values);
+
+        if (!invalidEmail)
+        {
+            let salt = crypto.randomBytes(128).toString('base64');
+            let iterations = 10000;
+
+            crypto.pbkdf2(values.password, salt, iterations, 64, 'sha512', async (err, derivedKey) => {
+                if (err) throw err;
+                
+                const { fname, lname, email } = values;
+                const password = derivedKey.toString('base64');
+
+                const fetchValues = { fname, lname, email, password, salt };
+
+                await fetch(`http://localhost:${[port]}/adduserbyregistration`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(fetchValues),
+                })
+                .then(res => res.json())
+                .then(resJson => {
+                    console.log(resJson);
+                });
+            });
+        }
+
+        document.getElementById("submitBtn").disabled=false;
     };
 
     const handleEmailBlur = async values => {
         if (emailSchema.isValidSync(values.target.value) && values.target.value) {
-            await fetch(`http://localhost:${process.env.REACT_APP_ENDPOINT_PORT}/validateuser`, {
+            await fetch(`http://localhost:${port}/validateuser`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({email: values.target.value}),
+                body: JSON.stringify( {email: values.target.value} ),
             })
             .then(res => res.json())
             .then(resJson => {
-                setValidEmail(!resJson.result);
+                setInvalidEmail(!resJson.result);
+                if (!resJson.result) {
+                    document.getElementById("email").style.border="2px solid red";
+                }
+                else
+                {
+                    document.getElementById("email").style.border="1px solid black";
+                }
             })
             .catch(error => console.log("Auth failed: " + error.message));
+        }
+        else
+        {
+            setInvalidEmail(false);
+            document.getElementById("email").style.border="1px solid black";
         }
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={ handleSubmit(onSubmit) }>
+            <label>First Name </label>
             <input 
                 placeholder="First Name"
                 {...register("fname")}
@@ -55,6 +101,7 @@ export const SignUpForm = () => {
             <p>{errors.fname && errors.fname.message}</p>
             <br/>
 
+            <label>Last Name </label>
             <input 
                 placeholder="Last Name"
                 {...register("lname")}
@@ -62,7 +109,9 @@ export const SignUpForm = () => {
             <p>{errors.lname && errors.lname.message}</p>
             <br/>
             
+            <label>Email </label>
             <input
+                id="email"
                 placeholder="Email"
                 type="email"
                 {...register("email")}
@@ -72,6 +121,7 @@ export const SignUpForm = () => {
             <p>{invalidEmail && "Email already exists"}</p>
             <br/>
 
+            <label>Password </label>
             <input
                 placeholder="Password"
                 type="password"
@@ -80,15 +130,16 @@ export const SignUpForm = () => {
             <p>{errors.password && errors.password.message}</p>
             <br/>
 
+            <label>Confirm Password </label>
             <input
                 placeholder="Confirm Password"
                 type="password"
                 {...register("confirmPassword")}
             />
-            <p>{errors.confirmPassword && errors.confirmPassword.message}</p>
+            <p>{ errors.confirmPassword && errors.confirmPassword.message }</p>
             <br/>
 
-            <button type="submit">Submit</button>
+            <button type="submit" id="submitBtn">Submit</button>
         </form>
     );
 };

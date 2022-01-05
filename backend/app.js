@@ -6,7 +6,8 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
 import {
-    validateUserByEmail
+    validateUserByEmail,
+    addUserByRegistration,
 }
 from './controllers/controllerUser.js';
 
@@ -29,6 +30,7 @@ app.use(express.json());
 //Routes
 
 app.use("/validateuser", validateUserByEmail)
+app.use("/adduserbyregistration", addUserByRegistration)
 
 app.get("/getallclients", async(req, res) => {
     try {
