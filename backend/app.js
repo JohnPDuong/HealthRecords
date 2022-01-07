@@ -8,6 +8,7 @@ import { dirname } from 'path';
 import {
     validateUserByEmail,
     addUserByRegistration,
+    loginUser,
 }
 from './controllers/controllerUser.js';
 
@@ -27,10 +28,12 @@ var corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-//Routes
+//Registration
+app.post("/api/registration", validateUserByEmail);
+app.put("/api/registration", addUserByRegistration);
 
-app.use("/validateuser", validateUserByEmail)
-app.use("/adduserbyregistration", addUserByRegistration)
+//Login
+app.post("/api/login", loginUser);
 
 app.get("/getallclients", async(req, res) => {
     try {

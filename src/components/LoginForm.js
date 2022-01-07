@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -8,7 +8,7 @@ import { Navigate } from 'react-router-dom';
 export const LoginForm = () => {
     const port = process.env.REACT_APP_ENDPOINT_PORT;
 
-    const [ successfulReg, setSuccessfulReg ] = useState(false);
+    const [ successfulLogin, setSuccessfulLogin ] = useState(false);
 
     const validationSchema = yup.object().shape({
         email: yup.string().required("Email is required")
@@ -21,9 +21,27 @@ export const LoginForm = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm(formOptions);
 
-    const onSubmit = (values) => {
+    const onSubmit = async values => {
+        document.getElementById("submitBtn").disabled=true;
+        
+        await fetch(`http://localhost:${[port]}/api/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(values),
+        })
+        .then(res => res.json())
+        .then(resJson => {
+            if (resJson.result) {
+                setSuccessfulLogin(true);
+            } else {
+                throw "Invalid email or password";
+            }
+        })
+        .catch(error => console.log("Auth failed: " + error.message));
 
-        console.log(values);
+        document.getElementById("submitBtn").disabled=false;
     }
 
     return (
@@ -48,7 +66,7 @@ export const LoginForm = () => {
 
             <button type="submit" id="submitBtn">Submit</button>
 
-            { successfulReg && <Navigate to="/" replace={ true } /> }
+            { successfulLogin && <Navigate to="/" replace={ true } /> }
         </form>
     );
 }

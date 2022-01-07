@@ -7,11 +7,11 @@ import {
 export const validateUserByEmail = async (req, res) => {
     try {
         const { email } = req.body;
-        const results = await pool.query("SELECT * FROM Clients WHERE Email = $1;", [ email ]);
+        const results = await pool.query("SELECT * FROM Clients WHERE email = $1;", [ email ]);
 
         let resVal = { result: true };
 
-        if (results.rows.length){
+        if (results.rowCount){
             resVal.result = false;
         }
         
@@ -24,11 +24,11 @@ export const validateUserByEmail = async (req, res) => {
 export const addUserByRegistration = async (req, res) => {
     try {
         const { fname, lname, email, password } = req.body;
-        const results = await pool.query("SELECT * FROM Clients WHERE Email = $1;", [ email ]);
+        const results = await pool.query("SELECT * FROM Clients WHERE email = $1;", [ email ]);
 
         let resVal = { result: true };
 
-        if (results.rowCount.length) {
+        if (results.rowCount) {
             resVal.result = false;
         } else {
             const { hashedPw, salt } = encryptPassword(password);
@@ -45,15 +45,22 @@ export const addUserByRegistration = async (req, res) => {
 
 export const loginUser = async (req, res) => {
     try {
-        const { email, password, salt } = req.body;
-    } catch(err) {
-        console.error(err.message);
-    }
-}
+        const { email, password } = req.body;
+        const emailResults = await pool.query("SELECT * FROM Clients WHERE email = $1", [ email ]);
 
-export const retrieveSalt = async (req, res) => {
-    try {
-        
+        let resVal = { result: true };
+
+        if (emailResults.rowCount) {
+            const compPw = decryptPassword(password, emailResults.rows[0].salt)
+
+            if (compPw != emailResults.rows[0].password) {
+                resVal.result = false;
+            }
+        } else {
+            resVal.result = false;
+        }
+
+        res.json(resVal);
     } catch(err) {
         console.error(err.message);
     }

@@ -43,8 +43,8 @@ export const SignUpForm = () => {
         
         if (!invalidEmail)
         {
-            await fetch(`http://localhost:${[port]}/adduserbyregistration`, {
-                method: "POST",
+            await fetch(`http://localhost:${[port]}/api/registration`, {
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -66,7 +66,7 @@ export const SignUpForm = () => {
 
     const handleEmailBlur = async values => {
         if (emailSchema.isValidSync(values.target.value) && values.target.value) {
-            await fetch(`http://localhost:${port}/validateuser`, {
+            await fetch(`http://localhost:${port}/api/registration`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
