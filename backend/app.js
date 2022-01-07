@@ -9,10 +9,6 @@ import {
     registration_add_user,
 }
 from './controllers/registrationController.js';
-import { 
-    login_authenticate_user 
-} from './controllers/loginController.js';
-
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 dotenv.config({ path: `${__dirname}/./../.env` });
@@ -32,9 +28,6 @@ app.use(express.json());
 //Registration
 app.post("/api/registration", registration_validate_email);
 app.put("/api/registration", registration_add_user);
-
-//Login
-app.post("/api/login", login_authenticate_user);
 
 app.get("/getallclients", async(req, res) => {
     try {

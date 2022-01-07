@@ -6,7 +6,7 @@ import { EMAIL_MAX, PASSWORD_MAX } from '../constants/SignUpFormConstants';
 import { Navigate } from 'react-router-dom';
 
 export const LoginForm = () => {
-    const port = process.env.REACT_APP_ENDPOINT_PORT;
+    const port = process.env.REACT_APP_AUTH_SERVER_PORT;
 
     const [ successfulLogin, setSuccessfulLogin ] = useState(false);
 
@@ -33,7 +33,7 @@ export const LoginForm = () => {
         })
         .then(res => res.json())
         .then(resJson => {
-            if (resJson.result) {
+            if (resJson.accessToken != null) {
                 setSuccessfulLogin(true);
             } else {
                 throw "Invalid email or password";

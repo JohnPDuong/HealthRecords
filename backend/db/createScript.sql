@@ -6,5 +6,6 @@ CREATE TABLE Clients (
     LName VARCHAR(100),
     Email VARCHAR(100) UNIQUE,
     Password VARCHAR(300),
-    Salt VARCHAR(300)
+    Salt VARCHAR(300),
+    RefreshToken VARCHAR(300)
 );
