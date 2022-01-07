@@ -1,10 +1,9 @@
 import pool from '../db.js';
 import { 
-    encryptPassword,
-    decryptPassword
+    encryptPassword
 } from '../helper/password.js';
 
-export const validateUserByEmail = async (req, res) => {
+export const registration_validate_email = async (req, res) => {
     try {
         const { email } = req.body;
         const results = await pool.query("SELECT * FROM Clients WHERE email = $1;", [ email ]);
@@ -21,7 +20,7 @@ export const validateUserByEmail = async (req, res) => {
     }
 };
 
-export const addUserByRegistration = async (req, res) => {
+export const registration_add_user = async (req, res) => {
     try {
         const { fname, lname, email, password } = req.body;
         const results = await pool.query("SELECT * FROM Clients WHERE email = $1;", [ email ]);
@@ -42,26 +41,3 @@ export const addUserByRegistration = async (req, res) => {
         console.error(err.message);
     }
 };
-
-export const loginUser = async (req, res) => {
-    try {
-        const { email, password } = req.body;
-        const emailResults = await pool.query("SELECT * FROM Clients WHERE email = $1", [ email ]);
-
-        let resVal = { result: true };
-
-        if (emailResults.rowCount) {
-            const compPw = decryptPassword(password, emailResults.rows[0].salt)
-
-            if (compPw != emailResults.rows[0].password) {
-                resVal.result = false;
-            }
-        } else {
-            resVal.result = false;
-        }
-
-        res.json(resVal);
-    } catch(err) {
-        console.error(err.message);
-    }
-}

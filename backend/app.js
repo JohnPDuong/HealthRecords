@@ -4,13 +4,14 @@ import pool from './db.js';
 import * as dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-
 import {
-    validateUserByEmail,
-    addUserByRegistration,
-    loginUser,
+    registration_validate_email,
+    registration_add_user,
 }
-from './controllers/controllerUser.js';
+from './controllers/registrationController.js';
+import { 
+    login_authenticate_user 
+} from './controllers/loginController.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -29,11 +30,11 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 //Registration
-app.post("/api/registration", validateUserByEmail);
-app.put("/api/registration", addUserByRegistration);
+app.post("/api/registration", registration_validate_email);
+app.put("/api/registration", registration_add_user);
 
 //Login
-app.post("/api/login", loginUser);
+app.post("/api/login", login_authenticate_user);
 
 app.get("/getallclients", async(req, res) => {
     try {
