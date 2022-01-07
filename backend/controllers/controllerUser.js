@@ -1,4 +1,8 @@
 import pool from '../db.js';
+import { 
+    encryptPassword,
+    decryptPassword
+} from '../helper/password.js';
 
 export const validateUserByEmail = async (req, res) => {
     try {
@@ -19,15 +23,37 @@ export const validateUserByEmail = async (req, res) => {
 
 export const addUserByRegistration = async (req, res) => {
     try {
-        const { fname, lname, email, password, salt } = req.body;
-        console.log(req.body);
+        const { fname, lname, email, password } = req.body;
+        const results = await pool.query("SELECT * FROM Clients WHERE Email = $1;", [ email ]);
 
-        let resVal = { message: "YAY" };
+        let resVal = { result: true };
 
-        await pool.query("INSERT INTO Clients (fname, lname, email, password, salt) VALUES ($1, $2, $3, $4, $5);",
-                        [ fname, lname, email, password, salt ]);
+        if (results.rowCount.length) {
+            resVal.result = false;
+        } else {
+            const { hashedPw, salt } = encryptPassword(password);
+
+            await pool.query("INSERT INTO Clients (fname, lname, email, password, salt) VALUES ($1, $2, $3, $4, $5);",
+                            [ fname, lname, email, hashedPw, salt ]);
+        }
 
         res.json(resVal);
+    } catch(err) {
+        console.error(err.message);
+    }
+};
+
+export const loginUser = async (req, res) => {
+    try {
+        const { email, password, salt } = req.body;
+    } catch(err) {
+        console.error(err.message);
+    }
+}
+
+export const retrieveSalt = async (req, res) => {
+    try {
+        
     } catch(err) {
         console.error(err.message);
     }
