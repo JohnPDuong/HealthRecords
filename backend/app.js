@@ -1,6 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import pool from './db.js';
 import * as dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -29,30 +28,4 @@ app.use(express.json());
 app.post("/api/registration", registration_validate_email);
 app.put("/api/registration", registration_add_user);
 
-app.get("/getallclients", async(req, res) => {
-    try {
-        const allClients = await pool.query("SELECT * FROM Clients;");
-
-        res.json(allClients.rows);
-    } catch (err) {
-        console.error(err.message);
-    }
-});
-
-app.post("/updateclient", async(req, res) => {
-    try {
-
-    } catch (err) {
-        console.error(err.message);
-    }
-});
-
-app.post("/delclient", async(req, res) => {
-    try {
-
-    } catch (err) {
-        console.error(err.message);
-    }
-});
-
-app.listen(port, () => console.log(`Listening on port ${port}!`));
+app.listen(port, () => console.log(`Listening on port ${ port }!`));

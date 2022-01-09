@@ -34,6 +34,7 @@ export const LoginForm = () => {
         .then(res => res.json())
         .then(resJson => {
             if (resJson.accessToken != null) {
+                sessionStorage.setItem("key", resJson.accessToken)
                 setSuccessfulLogin(true);
             } else {
                 throw "Invalid email or password";

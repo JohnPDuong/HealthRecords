@@ -29,8 +29,8 @@ export const login_authenticate_user = async (req, res) => {
             }
         }
 
-        res.json( { accessToken: accessToken, refreshToken: refreshToken });
+        res.json( { accessToken: accessToken });
     } catch(err) {
         console.error(err.message);
     }
-}
+};

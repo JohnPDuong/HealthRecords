@@ -4,18 +4,27 @@ import env from 'dotenv';
 
 env.config();
 
-export const token_authenticate = (req, res, next) => {
+// Authenticates and return client ID
+export const token_authenticate_access = async (req, res) => {
     const authHeader = req.headers["authorization"];
     const token = authHeader && authHeader.split(" ")[1];
-    if (token == null) return res.sendStatus(401);
+    let resVal;
+    if (token != null) {
+        jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+            if (err == null) {
+                const results = await pool.query("SELECT * FROM Clients WHERE Clients.ClientID = $1;", [ user.id ]);
+                if (results.rows[0].refreshtoken != null) resVal = user.id;
+                res.json(resVal);
+            } else {
+                res.sendStatus(401);
+            }
+        });
+    } else {
+        res.sendStatus(401);
+    }
+};
 
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-        if (err) return res.sendStatus(403);
-        req.user = user;
-        next();
-    });
-}
-
+// Verifies refresh token validity, generates access token and returns access token
 export const token_generate_refresh = async (req, res) => {
     const { refreshToken } = req.body;
     const refreshTokenComp = await pool.query("SELECT * FROM Clients WHERE Clients.RefreshToken = $1;", [ refreshToken ]);
@@ -29,8 +38,15 @@ export const token_generate_refresh = async (req, res) => {
 
         res.json({ accessToken: accessToken });
     });
-}
+};
 
+// Deletes refresh token
+export const token_delete_refresh = async (req, res) => {
+    await pool.query("UPDATE Clients SET RefreshToken = NULL WHERE Clients.ClientID = $1;", [ req.body.id ]);
+    res.sendStatus(204);
+};
+
+// Generates access token to access sensitive information
 export const token_generate_access = (user) => {
-    return jwt.sign({ id: user }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "15s" });
-}
+    return jwt.sign({ id: user }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1hr" });
+};
