@@ -1,7 +1,7 @@
 import React from 'react';
 import { Root } from './Root';
 
-export class News extends React.Component {
+export default class News extends React.Component {
     render() {
         return (
             <Root>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { HeaderNavBar } from './HeaderNavBar';
+import HeaderNavBar from './HeaderNavBar';
 
 export class Root extends React.Component {
     render() {

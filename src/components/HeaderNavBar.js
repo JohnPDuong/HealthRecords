@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import '../css/layout/App.css';
 import '../css/layout/HeaderNavBar.css';
 
-export class HeaderNavBar extends React.Component {
+export default class HeaderNavBar extends React.Component {
     constructor()
     {
         super();
@@ -62,7 +62,7 @@ export class HeaderNavBar extends React.Component {
                     <li><NavLink exact="true" activestyle={{ color: "red" }} to={ "/about" }>About</NavLink></li>
                     { !this.state.name && <li><NavLink exact="true" to={ "/login" }>Login</NavLink></li> }
                     { !this.state.name && <li><NavLink exact="true" to={ "/signup" }>Sign Up</NavLink></li> }
-                    { this.state.name && <li>Hello, { this.state.name }</li> }
+                    { this.state.name && <li><NavLink exact="true" to={ "/user" }>Hello, { this.state.name }</NavLink></li> }
                     { this.state.name && <li><button onClick={ this.logout.bind(this) }>Logout</button></li> }
                 </ul>
                 </div>

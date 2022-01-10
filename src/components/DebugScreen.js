@@ -1,6 +1,6 @@
 import React from 'react'
 
-export class DebugScreen extends React.Component {
+export default class DebugScreen extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -31,4 +31,4 @@ export class DebugScreen extends React.Component {
             </div>
         );
     }
-}
+};

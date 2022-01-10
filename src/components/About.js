@@ -1,7 +1,7 @@
 import React from 'react';
 import { Root } from './Root';
 
-export class About extends React.Component {
+export default class About extends React.Component {
     render() {
         return (
             <Root>

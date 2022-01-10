@@ -1,8 +1,8 @@
 import React from 'react';
-import { SecureNav } from './SecureNav';
+import SecureNav from './SecureNav';
 import { SignUpForm } from './SignUpForm';
 
-export class SignUp extends React.Component {
+export default class SignUp extends React.Component {
     render() {
         return (
             <div>

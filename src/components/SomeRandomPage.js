@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Root } from './Root';
 
-export class SomeRandomPage extends React.Component {
+export default class SomeRandomPage extends React.Component {
     render() {
         return (
             <Root>
