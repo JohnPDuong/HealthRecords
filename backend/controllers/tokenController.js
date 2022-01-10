@@ -6,15 +6,17 @@ env.config();
 
 // Authenticates and return client ID
 export const token_authenticate_access = async (req, res) => {
-    const authHeader = req.headers["authorization"];
-    const token = authHeader && authHeader.split(" ")[1];
+    const token = req.headers["authorization"];
+
     let resVal;
+
     if (token != null) {
         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
             if (err == null) {
                 const results = await pool.query("SELECT * FROM Clients WHERE Clients.ClientID = $1;", [ user.id ]);
                 if (results.rows[0].refreshtoken != null) resVal = user.id;
-                res.json(resVal);
+
+                res.json({ id: resVal });
             } else {
                 res.sendStatus(401);
             }
@@ -42,8 +44,20 @@ export const token_generate_refresh = async (req, res) => {
 
 // Deletes refresh token
 export const token_delete_refresh = async (req, res) => {
-    await pool.query("UPDATE Clients SET RefreshToken = NULL WHERE Clients.ClientID = $1;", [ req.body.id ]);
-    res.sendStatus(204);
+    const token = req.headers["authorization"];
+
+    if (token != null) {
+        jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+            if (err == null) {
+                await pool.query("UPDATE Clients SET RefreshToken = NULL WHERE Clients.ClientID = $1;", [ user.id ]);
+                res.sendStatus(204);
+            } else {
+                res.sendStatus(401);
+            }
+        });
+    } else {
+        res.sendStatus(401);
+    }
 };
 
 // Generates access token to access sensitive information

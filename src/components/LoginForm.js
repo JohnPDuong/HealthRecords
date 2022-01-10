@@ -24,7 +24,7 @@ export const LoginForm = () => {
     const onSubmit = async values => {
         document.getElementById("submitBtn").disabled=true;
         
-        await fetch(`http://localhost:${[port]}/api/login`, {
+        await fetch(`http://localhost:${[ port ]}/api/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

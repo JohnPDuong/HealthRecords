@@ -8,11 +8,14 @@ import {
     registration_add_user,
 }
 from './controllers/registrationController.js';
+import { 
+    fetch_first_name 
+} from './controllers/fetchController.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 dotenv.config({ path: `${__dirname}/./../.env` });
 
-//Middleware
+// Middleware
 
 const app = express();
 const port = process.env.ENDPOINT_PORT;
@@ -24,8 +27,11 @@ var corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-//Registration
+// Registration
 app.post("/api/registration", registration_validate_email);
 app.put("/api/registration", registration_add_user);
+
+// Fetch
+app.get("/api/fetch", fetch_first_name);
 
 app.listen(port, () => console.log(`Listening on port ${ port }!`));

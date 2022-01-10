@@ -43,7 +43,7 @@ export const SignUpForm = () => {
         
         if (!invalidEmail)
         {
-            await fetch(`http://localhost:${[port]}/api/registration`, {
+            await fetch(`http://localhost:${[ port ]}/api/registration`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
