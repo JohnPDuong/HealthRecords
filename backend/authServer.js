@@ -28,7 +28,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 //Token
-app.post("/api/token", token_authenticate_access);
+app.get("/api/token", token_authenticate_access);
 app.put("/api/token", token_generate_refresh);
 app.delete("/api/token", token_delete_refresh);
 

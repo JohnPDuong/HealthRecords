@@ -62,5 +62,5 @@ export const token_delete_refresh = async (req, res) => {
 
 // Generates access token to access sensitive information
 export const token_generate_access = (user) => {
-    return jwt.sign({ id: user }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1hr" });
+    return jwt.sign({ id: user }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "15s" });
 };

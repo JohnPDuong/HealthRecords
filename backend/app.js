@@ -9,7 +9,8 @@ import {
 }
 from './controllers/registrationController.js';
 import { 
-    fetch_first_name 
+    fetch_first_name,
+    fetch_profile
 } from './controllers/fetchController.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -33,5 +34,6 @@ app.put("/api/registration", registration_add_user);
 
 // Fetch
 app.get("/api/fetch", fetch_first_name);
+app.post("/api/fetch", fetch_profile);
 
 app.listen(port, () => console.log(`Listening on port ${ port }!`));

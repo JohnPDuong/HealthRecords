@@ -5,9 +5,9 @@ const port = process.env.AUTH_SERVER_PORT;
 
 export const fetch_first_name = async (req, res) => {
     const authHeader = req.headers["authorization"];
-    
-    await fetch(`http://localhost:3002/api/token`, {
-        method: "POST",
+
+    await fetch(`http://localhost:${ port }/api/token`, {
+        method: "GET",
         headers: {
             "Content-Type": "application/json",
             "Authorization": authHeader,
@@ -15,10 +15,28 @@ export const fetch_first_name = async (req, res) => {
     })
     .then(res => res.json())
     .then(async resJson => {
-        //res.json(resJson.id);
         const results = await pool.query("SELECT fname FROM Clients WHERE Clients.ClientID = $1;", [ resJson.id ]);
-
+        
         res.json(results.rows[0].fname);
+    })
+    .catch(error => console.log("Auth failed: " + error.message));
+};
+
+export const fetch_profile = async(req, res) => {
+    const authHeader = req.headers["authorization"];
+
+    await fetch(`http://localhost:${ port }/api/token`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": authHeader,
+        }
+    })
+    .then(res => res.json())
+    .then(async resJson => {
+        const results = await pool.query("SELECT fname, lname, email FROM Clients WHERE Clients.ClientID = $1;", [ resJson.id ]);
+
+        res.json(results.rows[0]);
     })
     .catch(error => console.log("Auth failed: " + error.message));
 }
