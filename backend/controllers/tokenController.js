@@ -1,6 +1,7 @@
 import pool from '../db.js';
 import jwt from 'jsonwebtoken';
 import env from 'dotenv';
+import { EXPIRE_TIME } from '../constants/AuthServerConstants.js';
 
 env.config();
 
@@ -62,5 +63,5 @@ export const token_delete_refresh = async (req, res) => {
 
 // Generates access token to access sensitive information
 export const token_generate_access = (user) => {
-    return jwt.sign({ id: user }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "15s" });
+    return jwt.sign({ id: user }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: EXPIRE_TIME });
 };

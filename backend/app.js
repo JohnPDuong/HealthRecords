@@ -32,7 +32,7 @@ app.use(express.json());
 app.post("/api/registration", registration_validate_email);
 app.put("/api/registration", registration_add_user);
 
-// Fetch
+// Fetch profile information
 app.get("/api/fetch", fetch_first_name);
 app.post("/api/fetch", fetch_profile);
 
