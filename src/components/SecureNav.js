@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import img from '../img/generic-logo.jpg';
+import img from '../img/HealthRecordsHeader.png';
 
 export default class SecureNav extends React.Component {
     render() {
