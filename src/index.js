@@ -9,6 +9,8 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import UserProfile from './components/UserProfile';
 
+import './css/layout/App.css';
+
 class App extends React.Component {
     render () {
         return (

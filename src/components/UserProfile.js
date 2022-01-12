@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom';
+import AccountHeader from './AccountHeader';
 
 import '../css/layout/UserProfile.css';
 
@@ -43,14 +44,9 @@ export default class UserProfile extends React.Component {
     render() {
         return (
             <div>
-                <div className="topnav">
-                    <div className="topnav-text">
-                        Health Records
-                    </div>
-                </div>
-
+                <AccountHeader />
                 <div className="content">
-                    <h2>Profile</h2>
+                    <h2 className="account-tabs">Profile</h2>
                     <div>First Name</div>
                     <div>{ this.state.fname }</div>
                     <div>Last Name</div>

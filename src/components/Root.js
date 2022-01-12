@@ -55,7 +55,7 @@ export class Root extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{ height: "100%" }}>
                 <HeaderNavBar 
                     name={ this.state.name } 
                     handleLogout={ this.handleLogout.bind(this) }
