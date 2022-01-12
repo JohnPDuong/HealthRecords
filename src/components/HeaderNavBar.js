@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import '../css/layout/App.css';
 import '../css/layout/HeaderNavBar.css';
 
+import img from '../img/NewHeaderLogo.png';
+
 export default class HeaderNavBar extends React.Component {
     constructor(props) {
         super(props);
@@ -17,7 +19,7 @@ export default class HeaderNavBar extends React.Component {
         return (
             <div className="header-wrapper">
                 <div className="header">
-            
+                    <img src={ img } />
                 </div>
                 <div className="nav-wrapper">
                     <ul className="navbar">
