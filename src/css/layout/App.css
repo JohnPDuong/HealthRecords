@@ -1,4 +1,8 @@
-html, body {
+html {
+    font-size: 100%;
+}
+
+body {
     margin: 0;
     padding: 0;
     text-align: center;
@@ -6,6 +10,6 @@ html, body {
     height: 100%;
 }
 
-#app {
-    height: 100%;
+@media (min-width: 480px) {
+
 }
