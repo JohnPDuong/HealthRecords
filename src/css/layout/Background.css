@@ -5,6 +5,7 @@
 }
 
 .background-text {
+    display: none;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -31,4 +32,15 @@
 
 .bgt-bot {
     transform: translate(-50%, 100%);
+}
+
+@media only screen and (max-width: 390px) /** iPhone 12 Pro **/
+{
+    .background {
+        width: 390px;
+    }
+
+    .background-text {
+        display: none;
+    }
 }

@@ -1,6 +1,9 @@
 import React from 'react';
 
-import HeaderNavBar from './HeaderNavBar';
+import HeaderNavBar from './Header';
+import '../css/layout/App.css';
+import Footer from './Footer';
+import Header from './Header';
 
 export class Root extends React.Component {
     constructor() {
@@ -55,14 +58,15 @@ export class Root extends React.Component {
 
     render() {
         return (
-            <div style={{ height: "100%" }}>
-                <HeaderNavBar 
+            <div className="root">
+                <Header
                     name={ this.state.name } 
                     handleLogout={ this.handleLogout.bind(this) }
                 />
-                <div>
+                <div className="root-body">
                     { this.props.children }
                 </div>
+                <Footer />
             </div>
         );
     }
