@@ -2,8 +2,6 @@ import React from 'react'
 import { Navigate } from 'react-router-dom';
 import AccountHeader from './AccountHeader';
 
-import '../css/layout/UserProfile.css';
-
 const port = process.env.REACT_APP_ENDPOINT_PORT;
 
 export default class UserProfile extends React.Component {

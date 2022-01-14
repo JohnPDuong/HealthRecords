@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import img from '../img/HealthRecordsHeader.png';
-import '../css/layout/AccountHeader.css';
 
 export default class AccountHeader extends React.Component {
     render() {

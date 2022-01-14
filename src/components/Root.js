@@ -1,7 +1,5 @@
 import React from 'react';
 
-import HeaderNavBar from './Header';
-import '../css/layout/App.css';
 import Footer from './Footer';
 import Header from './Header';
 

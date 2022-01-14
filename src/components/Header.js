@@ -1,9 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import '../css/layout/App.css';
-import '../css/layout/HeaderNavBar.css';
-
 import img from '../img/NewHeaderLogoBlack.png';
 
 export default class Header extends React.Component {
@@ -18,12 +15,12 @@ export default class Header extends React.Component {
     render() {
         return (
             <header>
-                <div class="container container-nav">
-                    <div class="site-img">
-                        <img class="site-img" src={ img }/>
+                <div className="container container-nav">
+                    <div className="container-header-logo">
+                        <img className="header-logo" src={ img }/>
                     </div>
-                    <nav>
-                        <ul>
+                    <nav className="container-list">
+                        <ul className="list-links">
                             <li>
                                 <NavLink 
                                     exact="true" 
