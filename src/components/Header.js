@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import img from '../img/NewHeaderLogoBlack.png';
+import '../css/modules/HeaderNavBar.css'
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -20,7 +21,13 @@ export default class Header extends React.Component {
                         <img className="header-logo" src={ img }/>
                     </div>
                     <nav className="container-list">
-                        <ul className="list-links">
+                        <div className="dropdown-toggle">
+                            <input className="input-toggle" type="checkbox" />
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <ul className="list-links dropdown">
                             <li>
                                 <NavLink 
                                     exact="true" 
