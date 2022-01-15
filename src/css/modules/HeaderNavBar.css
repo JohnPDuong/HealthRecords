@@ -67,12 +67,14 @@ header {
     border-bottom: 1px solid var(--linkActiveColor);
 }
 
-@media (max-width: 1130px) {
+@media (max-width: 1150px) {
+    .container-nav {
+        flex-direction: column;
+    }
+
     .container-list, .container-header-logo {
         width: 100%;
     }
-
-
 
     .list-links, .container-header-logo {
         justify-content: center;
@@ -80,120 +82,56 @@ header {
     }
 }
 
-.input-toggle {
-    display: none;
-}
-
 @media (max-width: 690px) {
-    .header-logo {
-        width: 300px;
-        height: 30px;
-    }
-    
     .list-links {
         display: none;
     }
 
-    .dropdown-toggle {
-        width: 50%;
-        display: flex;
-        position: relative;
-        flex-direction: column;
-        justify-content: right;
-        
-        z-index: 1;
-        
-        -webkit-user-select: none;
-        user-select: none;
+    .container-header-logo {
+        display: block;
+        padding: 1rem;
     }
 
-    .input-toggle
-    {
-        display: block;
-        width: 40px;
-        height: 32px;
-        top: -7px;
-        left: -5px;
-        
-        cursor: pointer;
-        
-        opacity: 0; /* hide this */
-        z-index: 2; /* and place it over the hamburger */
-        
-        -webkit-touch-callout: none;
+    .header-logo {
+        width: 207px;
+        height: 27px;
     }
 
-    span
-    {
+    .left {
+        width: 207px;
+        height: 27px;
+        float: left;
+    }
+
+    .right {
+        width: 32px;
+        height: 23px;
+        float: right;
+    }
+
+    .container-nav {
         display: block;
-        width: 33px;
+    }
+
+    .container-dropdown {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        height: 20px;
+    }
+
+    span {
+        display: block;
+        margin-bottom: 3px;
+        width: 30px;
         height: 4px;
-        margin-bottom: 5px;
-        
-        background: #cdcdcd;
-        border-radius: 3px;
-        
-        transform-origin: 4px 0px;
-        
-        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                    opacity 0.55s ease;
+        background: rgb(155, 152, 152);
+        border-radius: 15px;
     }
+}
 
-    span:first-child
-    {
-        transform-origin: 0% 0%;
-    }
-
-    span:nth-last-child(2)
-    {
-        transform-origin: 0% 100%;
-    }
-
-    input:checked ~ span
-    {
-        opacity: 1;
-        transform: rotate(45deg) translate(-2px, -1px);
-        background: #232323;
-    }
-
-    input:checked ~ span:nth-last-child(3)
-    {
-        opacity: 0;
-        transform: rotate(0deg) scale(0.2, 0.2);
-    }
-
-    input:checked ~ span:nth-last-child(2)
-    {
-        transform: rotate(-45deg) translate(0, -1px);
-    }
-
-    .dropdown
-    {
-        width: 300px;
-        margin: -100px 0 0 -50px;
-        padding: 50px;
-        padding-top: 125px;
-        
-        background: #ededed;
-        list-style-type: none;
-        -webkit-font-smoothing: antialiased;
-        /* to stop flickering of text in safari */
-        
-        transform-origin: 0% 0%;
-        transform: translate(100%, 0);
-        
-        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-    }
-
-    li
-    {
-        padding: 10px 0;
-        font-size: 22px;
-    }
-
-    input:checked ~ ul
-    {
-        transform: none;
-    }
+body {
+    margin: 0;
+    min-width: 390px;
 }

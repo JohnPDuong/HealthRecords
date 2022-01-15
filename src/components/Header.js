@@ -17,16 +17,15 @@ export default class Header extends React.Component {
         return (
             <header>
                 <div className="container container-nav">
-                    <div className="container-header-logo">
+                    <div className="container-header-logo left">
                         <img className="header-logo" src={ img }/>
                     </div>
+                    <div className="container-dropdown right">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                     <nav className="container-list">
-                        <div className="dropdown-toggle">
-                            <input className="input-toggle" type="checkbox" />
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
                         <ul className="list-links dropdown">
                             <li>
                                 <NavLink 
