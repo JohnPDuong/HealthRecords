@@ -26,21 +26,38 @@
 
 .aim-header {
     text-align: center;
+    margin: 0;
+    padding-top: 1.5rem;
+}
+
+.row {
+    width: 100%;
 }
 
 .column {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     float: left;
-    width: 33.33%;
-
-    height: 300px; /** demonstration purposes **/
+    width: 33.2%;
 }
 
 .row:after {
     content: "";
     display: table;
     clear: both;
+}
+
+.main-aim-text {
+    width: 80%;
+}
+
+.main-aim-text-header {
+    text-align: center;
+}
+
+.main-aim, .aim-header {
+    background-color: #f8f8f8;
+    font-size: 2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
