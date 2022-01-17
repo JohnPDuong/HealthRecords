@@ -1,0 +1,46 @@
+.img-wrapper {
+    display: flex;
+    justify-content: center;
+
+    position: relative;
+    font-family: Arial;
+}
+
+.background-img {
+    min-width: 1536px;
+    min-height: 657px;
+    width: 100%;
+}
+
+.text-block {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    padding: 2rem;
+    font-weight: bolder;
+    opacity: 0.5;
+    font-size: 200%;
+}
+
+.aim-header {
+    text-align: center;
+}
+
+.column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    float: left;
+    width: 33.33%;
+
+    height: 300px; /** demonstration purposes **/
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

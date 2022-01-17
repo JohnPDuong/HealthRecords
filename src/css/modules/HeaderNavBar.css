@@ -9,7 +9,8 @@
     --linkActiveColor: #345d9b;
 }
 
-header {
+.main-page-header {
+    min-height: 59px;
     margin: 0 auto;
     padding: 0;
     background: #f8f8f8;
@@ -17,6 +18,7 @@ header {
 }
 
 .list-links {
+    width: 60%;
     list-style: none;
     display: flex;
     justify-content: right;
@@ -33,10 +35,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-ul {
-    width: 60%;
 }
 
 .container-header-logo {
@@ -88,6 +86,7 @@ ul {
 }
 
 @media (max-width: 690px) {
+
     .link {
         margin: 0 auto;
     }
@@ -134,7 +133,7 @@ ul {
         position: absolute;
         right: -200px;
         top: 59px;
-        background-color: white;
+        background-color: #f8f8f8;
         padding-left: 30px;
         padding-right: 20px;
         padding-bottom: 60px;
@@ -226,4 +225,5 @@ ul {
 body {
     margin: 0;
     min-width: 390px;
+    min-height: 100vh;
 }

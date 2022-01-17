@@ -15,7 +15,7 @@ export default class Header extends React.Component {
 
     render() {
         return (
-            <header>
+            <header className="main-page-header">
                 <div className="container container-nav">
                     <div className="container-header-logo left">
                         <img className="header-logo" src={ img }/>
