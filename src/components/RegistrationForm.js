@@ -9,8 +9,9 @@ import {
     EMAIL_MAX 
 } from '../constants/SignUpFormConstants';
 import { Navigate } from 'react-router-dom';
+import '../css/modules/LoginReg.css';
 
-export const SignUpForm = () => {
+export const RegistrationForm = () => {
     const port = process.env.REACT_APP_ENDPOINT_PORT;
 
     const [ successfulReg, setSuccessfulReg ] = useState(false);
@@ -93,56 +94,54 @@ export const SignUpForm = () => {
     }
 
     return (
-        <form onSubmit={ handleSubmit(onSubmit) }>
-            <label>First Name </label>
-            <input 
-                placeholder="First Name"
-                {...register("fname")}
-            />
-            <p>{ errors.fname && errors.fname.message }</p>
-            <br/>
+        <div className="container-login-reg">
+            <form className="login-reg-form" onSubmit={ handleSubmit(onSubmit) }>
+                <input
+                    className="login-reg-input"
+                    placeholder="First Name"
+                    {...register("fname")}
+                />
+                <p>{ errors.fname && errors.fname.message }</p>
+                <br/>
+                <input
+                    className="login-reg-input"
+                    placeholder="Last Name"
+                    {...register("lname")}
+                />
+                <p>{ errors.lname && errors.lname.message }</p>
+                <br/>
+                <input
+                    className="login-reg-input"
+                    id="email"
+                    placeholder="Email"
+                    type="email"
+                    {...register("email")}
+                    onBlur={(e) => handleEmailBlur(e)}
+                />
+                <p>{ errors.email && errors.email.message }</p>
+                <p>{ invalidEmail && "Email already exists" }</p>
+                <br/>
+                <input
+                    className="login-reg-input"
+                    placeholder="Password"
+                    type="password"
+                    {...register("password")}
+                />
+                <p>{ errors.password && errors.password.message }</p>
+                <br/>
+                <input
+                    className="login-reg-input"
+                    placeholder="Confirm Password"
+                    type="password"
+                    {...register("confirmPassword")}
+                />
+                <p>{ errors.confirmPassword && errors.confirmPassword.message }</p>
+                <br/>
 
-            <label>Last Name </label>
-            <input 
-                placeholder="Last Name"
-                {...register("lname")}
-            />
-            <p>{ errors.lname && errors.lname.message }</p>
-            <br/>
-            
-            <label>Email </label>
-            <input
-                id="email"
-                placeholder="Email"
-                type="email"
-                {...register("email")}
-                onBlur={(e) => handleEmailBlur(e)}
-            />
-            <p>{ errors.email && errors.email.message }</p>
-            <p>{ invalidEmail && "Email already exists" }</p>
-            <br/>
+                <button className="login-reg-button" type="submit" id="submitBtn">Submit</button>
 
-            <label>Password </label>
-            <input
-                placeholder="Password"
-                type="password"
-                {...register("password")}
-            />
-            <p>{ errors.password && errors.password.message }</p>
-            <br/>
-
-            <label>Confirm Password </label>
-            <input
-                placeholder="Confirm Password"
-                type="password"
-                {...register("confirmPassword")}
-            />
-            <p>{ errors.confirmPassword && errors.confirmPassword.message }</p>
-            <br/>
-
-            <button type="submit" id="submitBtn">Submit</button>
-
-            { successfulReg && <Navigate to="/login" replace={ true } />}
-        </form>
+                { successfulReg && <Navigate to="/login" replace={ true } />}
+            </form>
+        </div>
     );
 };

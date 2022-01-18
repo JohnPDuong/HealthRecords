@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { EMAIL_MAX, PASSWORD_MAX } from '../constants/SignUpFormConstants';
 import { Navigate } from 'react-router-dom';
-import '../css/modules/LoginForm.css';
+import '../css/modules/LoginRegForm.css';
 
 export const LoginForm = () => {
     const port = process.env.REACT_APP_AUTH_SERVER_PORT;
@@ -47,10 +47,10 @@ export const LoginForm = () => {
     }
 
     return (
-        <div className="container-login">
-            <form className="login-form" onSubmit={ handleSubmit(onSubmit) }>
+        <div className="container-login-reg">
+            <form className="login-reg-form" onSubmit={ handleSubmit(onSubmit) }>
                 <input
-                    className="login-input"
+                    className="login-reg-input"
                     type="email"
                     placeholder="Email"
                     {...register("email")}
@@ -59,7 +59,7 @@ export const LoginForm = () => {
                 <br/>
 
                 <input
-                    className="login-input"
+                    className="login-reg-input"
                     type="password"
                     placeholder="Password"
                     {...register("password")}
@@ -67,7 +67,7 @@ export const LoginForm = () => {
                 <p>{ errors.password && errors.password.message }</p>
                 <br/>
 
-                <button className="login-button" type="submit" id="submitBtn">Submit</button>
+                <button className="login-reg-button" type="submit" id="submitBtn">Submit</button>
 
                 { successfulLogin && <Navigate to="/" replace={ true } /> }
             </form>

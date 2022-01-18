@@ -1,15 +1,15 @@
-.container-login {
+.container-login-reg {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.login-form {
-    width: 33.33%;
+.login-reg-form {
+    width: 66.67%;
     text-align: center;
 }
 
-.login-input, .login-button {
+.login-reg-input, .login-reg-button {
     width: 100%;
     height: 2rem;
     border-radius: 20px;
@@ -19,11 +19,11 @@
     padding: 0px;
 }
 
-.login-input:hover, .login-button:hover {
+.login-reg-input:hover, .login-reg-button:hover {
     opacity: 1;
 }
 
-.login-button {
+.login-reg-button {
     background-color: #2f82ff;
     color: white;
 }

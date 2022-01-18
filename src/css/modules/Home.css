@@ -58,6 +58,17 @@
 
 .main-aim, .aim-header {
     background-color: #f8f8f8;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.main-aim {
+    font-weight: bold;
+}
+
+@media (max-width: 1130px)
+{
+    .column {
+        width: 100%;
+    }
 }

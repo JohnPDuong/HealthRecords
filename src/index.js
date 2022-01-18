@@ -6,7 +6,7 @@ import About from './components/About';
 import News from './components/News';
 import SomeRandomPage from './components/SomeRandomPage';
 import Login from './components/Login';
-import SignUp from './components/SignUp';
+import Registration from './components/Registration';
 import UserProfile from './components/UserProfile';
 
 class App extends React.Component {
@@ -19,7 +19,7 @@ class App extends React.Component {
                     <Route exact path={ "/news" } element={ <News /> }/>
                     <Route exact path={ "/somerandompage" } component={ <SomeRandomPage /> }/>
                     <Route exact path={ "/login" } element={ <Login /> }/>
-                    <Route exact path={ "/signup" } element={ <SignUp /> }/>
+                    <Route exact path={ "/registration" } element={ <Registration /> }/>
                     <Route exact path={ "/user" } element={ <UserProfile /> } />
                 </Routes>
             </Router>

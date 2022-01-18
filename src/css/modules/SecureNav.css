@@ -1,0 +1,9 @@
+.container-secure-nav {
+    text-align: center;
+}
+
+.secure-nav-img {
+    max-width: 861px;
+    min-width: 320px;
+    width: 90%;
+}

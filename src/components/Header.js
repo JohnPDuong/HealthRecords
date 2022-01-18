@@ -59,7 +59,7 @@ export default class Header extends React.Component {
                             </NavLink>
                         </li>
                         { !this.props.name && <li><NavLink className="link" exact="true" to={ "/login" }>Login</NavLink></li> }
-                        { !this.props.name && <li><NavLink className="link"exact="true" to={ "/signup" }>Register</NavLink></li> }
+                        { !this.props.name && <li><NavLink className="link"exact="true" to={ "/registration" }>Register</NavLink></li> }
                         { this.props.name && <li><NavLink className="link" exact="true" to={ "/user" }>Hello, { this.props.name }</NavLink></li> }
                         { this.props.name && <li><button className="link" onClick={ this.handleLogoutClick.bind(this) }>Logout</button></li> }
                     </ul>
