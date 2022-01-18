@@ -1,18 +1,18 @@
-.topnav {
-    overflow: hidden;
-    background-color: #333;
-    width: 100%;
-}
-
 .account-tabs {
     margin: 0;
 }
 
-.content {
-    background-color: #ddd;
+.user-profile-content {
+    padding: 2rem 0px;
+    text-align: center;
+    background-color: white;
 }
 
-.footer {
-    background-color: #f1f1f1;
-    padding: 10px;
+.user-profile-content h1, h2 {
+    font-family: Ubuntu, sans-serif;
+}
+
+.user-profile-content p {
+    font-family: Lora, serif;
+    font-size: 1.5rem;
 }

@@ -1,0 +1,11 @@
+.container-account-header-logo {
+    width: 100%;
+    text-align: center;
+}
+
+.account-header-logo {
+    min-width: 407px;
+    min-height: 47px;
+    width: 70%;
+    max-width: 800px;
+}
