@@ -1,0 +1,36 @@
+.container-login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    width: 33.33%;
+    text-align: center;
+}
+
+.login-input, .login-button {
+    width: 100%;
+    height: 2rem;
+    border-radius: 10px;
+
+    font-size: 1.5rem;
+    opacity: 0.65;
+    padding: 0px;
+}
+
+.login-input:hover, .login-button:hover {
+    opacity: 1;
+}
+
+.login-button {
+    background-color: #2f82ff;
+    color: white;
+}
+
+body {
+    margin: 0;
+    min-width: 390px;
+    min-height: 100vh;
+    background-color: #f8f8f8f8;
+}
