@@ -48,7 +48,7 @@ export const LoginForm = () => {
 
     return (
         <div className="container-login">
-            <form onSubmit={ handleSubmit(onSubmit) }>
+            <form className="login-form" onSubmit={ handleSubmit(onSubmit) }>
                 <input
                     className="login-input"
                     type="email"
