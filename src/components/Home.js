@@ -2,7 +2,6 @@ import React from 'react';
 import { Root } from './Root';
 
 import background_img from '../img/bg-health.jpeg';
-import '../css/modules/Home.css';
 
 export default class Home extends React.Component {
     render() {

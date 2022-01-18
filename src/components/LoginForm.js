@@ -4,7 +4,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { EMAIL_MAX, PASSWORD_MAX } from '../constants/SignUpFormConstants';
 import { Navigate } from 'react-router-dom';
-import '../css/modules/LoginRegForm.css';
 
 export const LoginForm = () => {
     const port = process.env.REACT_APP_AUTH_SERVER_PORT;

@@ -9,7 +9,6 @@ import {
     EMAIL_MAX 
 } from '../constants/SignUpFormConstants';
 import { Navigate } from 'react-router-dom';
-import '../css/modules/LoginReg.css';
 
 export const RegistrationForm = () => {
     const port = process.env.REACT_APP_ENDPOINT_PORT;

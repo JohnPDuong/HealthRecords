@@ -1,0 +1,230 @@
+/** Media Query Sizes **/
+/** Do not use var for media queries **/
+/** 1130px **/
+/** 690px **/
+
+:root {
+    /** Colors **/
+    --linkBaseColor: #707070;
+    --linkActiveColor: #345d9b;
+}
+
+.main-page-header {
+    min-height: 59px;
+    margin: 0 auto;
+    padding: 0;
+    background: #f8f8f8;
+    font-size: 2rem;
+}
+
+.list-links {
+    width: 60%;
+    list-style: none;
+    display: flex;
+    justify-content: right;
+    width: 100%;
+}
+
+.container {
+    width: 90%;
+    max-width: 2500px;
+    margin: 0 auto;
+}
+
+.container-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-header-logo {
+    display: flex;
+    width: 40%;
+}
+
+.header-logo {
+    
+    width: 407px;
+    height: 47px;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--linkBaseColor);
+    font-weight: 700;
+    font-family: Andale Mono, monospace;
+    width: 100%;
+    margin-left: 1.5rem;
+}
+
+.link:hover {
+    color: var(--linkActiveColor);
+}
+
+.active {
+    color: var(--linkActiveColor);
+    border-bottom: 1px solid var(--linkActiveColor);
+}
+
+.toggle-dropdown {
+    display: none;
+}
+
+@media (max-width: 1150px) {
+    .container-nav {
+        flex-direction: column;
+    }
+
+    .container-header-logo {
+        width: 100%;
+    }
+
+    .list-links, .container-header-logo {
+        justify-content: center;
+        padding: 0;
+    }
+}
+
+@media (max-width: 690px) {
+
+    .link {
+        margin: 0 auto;
+    }
+    
+    .container-header-logo {
+        display: block;
+        padding: 1rem;
+    }
+
+    .header-logo {
+        width: 207px;
+        height: 27px;
+    }
+
+    .left {
+        width: 207px;
+        height: 27px;
+        float: left;
+    }
+
+    .right {
+        width: 32px;
+        height: 23px;
+        float: right;
+    }
+
+    .container-nav {
+        display: block;
+    }
+
+    .container-dropdown {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        height: 20px;
+    }
+
+    .dropdown {
+        width: 150px;
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        position: absolute;
+        right: -200px;
+        top: 59px;
+        background-color: #f8f8f8;
+        padding-left: 30px;
+        padding-right: 20px;
+        padding-bottom: 60px;
+        margin: 0;
+        z-index: 2;
+        
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .toggle-dropdown {
+        display: block;
+        position: absolute;
+        height: 32px;
+        width: 40px;
+
+        cursor: pointer;
+        top: 13px;
+        right: 12px;
+
+        opacity: 0;
+        z-index: 2;
+    }
+
+    span {
+        display: block;
+        margin-bottom: 3px;
+        width: 30px;
+        height: 4px;
+        background: rgb(155, 152, 152);
+        border-radius: 15px;
+        position: absolute;
+        right: 20px;
+
+        z-index: 1;
+
+        transform-origin: 4px 0px;
+
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                    opacity 0.55s ease;
+    }
+
+    .span1 {
+        top: 20px;
+    }
+
+    .span2 {
+        top: 30px;
+    }
+
+    .span3 {
+        top: 40px;
+    }
+
+    span:first-child {
+        transform-origin: 0% 0%;
+    }
+
+    span:nth-last-child(2) {
+        transform-origin: 0% 100%;
+    }
+
+    span:nth-last-child(1) {
+        transform-origin: 0% 0%;
+    }
+
+    input:checked ~ span {
+        opacity: 1;
+        transform: rotate(-45deg) translate(-15px, 11px);
+        background: #232323;
+    }
+
+    input:checked ~ span:nth-last-child(3) {
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+    }
+
+    input:checked ~ span:nth-last-child(2) {
+        transform: rotate(45deg) translate(-16px, -13px);
+    }
+
+    input:checked ~ .dropdown {
+        transform-origin: 0% 0%;
+        transform: translate(-100%, 0);
+        
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    }
+}
+
+body {
+    margin: 0;
+    min-width: 390px;
+    min-height: 100vh;
+}

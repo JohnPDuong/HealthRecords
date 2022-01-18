@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import img from '../img/NewHeaderLogoBlack.png';
-import '../css/modules/HeaderNavBar.css'
 
 export default class Header extends React.Component {
     constructor(props) {
