@@ -1,6 +1,12 @@
+/** Media Query Sizes **/
+/** Do not use var for media queries **/
+/** 1130px **/
+/** 690px **/
+
 body {
     margin: 0;
     min-width: 390px;
     min-height: 100vh;
-    background-color: #f8f8f8f8
+    background-color: #f8f8f8f8;
+    overflow-x: hidden;
 }

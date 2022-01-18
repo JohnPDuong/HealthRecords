@@ -68,6 +68,11 @@
 
 @media (max-width: 1130px)
 {
+    .background-img {
+        object-fit: cover;
+        min-width: 0px;
+    }
+
     .column {
         width: 100%;
     }
