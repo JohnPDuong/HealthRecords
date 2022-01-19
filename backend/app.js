@@ -12,6 +12,9 @@ import {
     fetch_first_name,
     fetch_profile
 } from './controllers/fetchController.js';
+import {
+    uploadRequest
+} from './controllers/fileUploadRequestController.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 dotenv.config({ path: `${__dirname}/./../.env` });
@@ -36,4 +39,6 @@ app.put("/api/registration", registration_add_user);
 app.get("/api/fetch", fetch_first_name);
 app.post("/api/fetch", fetch_profile);
 
-app.listen(port, () => console.log(`Listening on port ${ port }!`));
+app.post("/api/upload-request", uploadRequest);
+
+app.listen(port, () => console.log(`App server listening on port ${ port }!`));

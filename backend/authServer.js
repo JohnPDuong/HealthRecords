@@ -36,4 +36,4 @@ app.delete("/api/token", token_delete_refresh);
 app.post("/api/login", login_authenticate_user);
 
 
-app.listen(port, () => console.log(`Listening on port ${ port }!`));
+app.listen(port, () => console.log(`Auth server listening on port ${ port }!`));

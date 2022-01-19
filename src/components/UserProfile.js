@@ -1,6 +1,7 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom';
 import UserRoot from './UserRoot';
+import FormData from 'form-data';
 
 const port = process.env.REACT_APP_ENDPOINT_PORT;
 
@@ -12,7 +13,8 @@ export default class UserProfile extends React.Component {
         this.state = {
             fname: null,
             lname: null,
-            email: null
+            email: null,
+            image: null
         };
     }
 
@@ -38,6 +40,44 @@ export default class UserProfile extends React.Component {
             });
         }
     }
+
+    handleFileChange = e => {
+        const img = {
+            preview: URL.createObjectURL(e.target.files[0]),
+            data: e.target.files[0],
+        }
+
+        this.setState({
+            image: img
+        });
+    }
+
+    onSubmit = async e => {
+        e.preventDefault();
+
+        document.getElementById("submitBtn").disabled=true;
+
+        let formData = new FormData();
+
+        formData.append("file", this.state.image.data);
+
+        console.log(this.state.image);
+        
+        await fetch(`http://localhost:${[ port ]}/api/upload-request`, {
+            method: "POST",
+            headers: {
+                "Authorization": sessionStorage.getItem("key"),
+            },
+            body: formData,
+        })
+        .then(res => res.json())
+        .then(resJson => {
+
+        })
+        .catch(error => console.log("Auth failed: " + error.message));
+
+        document.getElementById("submitBtn").disabled=false;
+    }
     
     render() {
         return (
@@ -52,6 +92,12 @@ export default class UserProfile extends React.Component {
                     <p>{ this.state.email }</p>
                     <h2>Password</h2>
                     <p>************</p>
+                    <p>Upload a file</p>
+                    { this.state.image && <img src={ this.state.image.preview } width="100" height="100" /> }
+                    <form onSubmit={ this.onSubmit }>
+                        <input type="file" name="image" onChange={ this.handleFileChange } />
+                        <button type="submit" id="submitBtn">Submit</button>
+                    </form>
                 </div>
                 { !sessionStorage.getItem("key") && <Navigate to="/login" replace={ true } /> }
             </UserRoot>
