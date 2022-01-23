@@ -6,7 +6,7 @@ Work In Progress
 
 ## Diagrams
 
-![Health Records System Design](https://user-images.githubusercontent.com/70611110/150665906-0b96f2fb-5307-4b6f-a5c0-bfb17847c82d.jpg)
+![Health Records System Design (1)](https://user-images.githubusercontent.com/70611110/150665986-7b2a451a-ec22-476b-ab02-cd02c3aa86ba.jpg)
 
 ![Login](https://user-images.githubusercontent.com/70611110/148664506-9519e9a0-a256-4761-8b96-8636023ff450.png)
 
