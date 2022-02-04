@@ -1,4 +1,4 @@
-import pool from '../db.js';
+import pool from '../../db/db.js';
 import jwt from 'jsonwebtoken';
 import env from 'dotenv';
 import { EXPIRE_TIME } from '../constants/AuthServerConstants.js';

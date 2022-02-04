@@ -1,4 +1,4 @@
-import pool from '../db.js';
+import pool from '../../db/db.js';
 import { 
     decryptPassword
 } from '../helper/password.js';

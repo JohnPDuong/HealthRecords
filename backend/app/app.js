@@ -7,14 +7,14 @@ import {
     registration_validate_email,
     registration_add_user,
 }
-from './controllers/registrationController.js';
+from '../controllers/registrationController.js';
 import { 
     fetch_first_name,
     fetch_profile
-} from './controllers/fetchController.js';
+} from '../controllers/fetchController.js';
 import {
     uploadRequest
-} from './controllers/fileUploadRequestController.js';
+} from '../controllers/fileUploadRequestController.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 dotenv.config({ path: `${__dirname}/./../.env` });

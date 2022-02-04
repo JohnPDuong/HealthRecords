@@ -7,10 +7,10 @@ import {
     token_authenticate_access,
     token_generate_refresh,
     token_delete_refresh
-} from './controllers/tokenController.js';
+} from '../controllers/tokenController.js';
 import { 
     login_authenticate_user 
-} from './controllers/loginController.js';
+} from '../controllers/loginController.js';
 
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

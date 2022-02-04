@@ -4,7 +4,7 @@ import cors from 'cors';
 import * as dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { uploadImage } from './controllers/fileUploadRequestController.js';
+import { uploadImage } from '../controllers/fileUploadRequestController.js';
 
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
